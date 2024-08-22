@@ -1,0 +1,82 @@
+from cryptography.fernet import Fernet
+import os
+from .import project
+p=project.__file__
+path=p[:-10]
+
+global __sentiWords__
+global __verbData__
+#path=pd.__file__
+#path=path[:-18]
+#path+="pandass\\"
+
+def __verbs__():
+        global __verbData__
+        __verbData__ ={}
+        __baseForm__=[]
+        __pastForm__ =[]
+        __pastParticipleForm__ =[]
+        __sEsIesForm__ =[]
+        __ingForm__ =[]
+        __polarity__ =[]
+        verb_file=open(path+"verb_list.csv",'r')
+        verb_file_data=verb_file.read()
+        verb_file.close()
+        data_lines=verb_file_data.split('\n')
+        verb_file_data=[line.split(',') for line in data_lines[1:1001]]
+        for line in verb_file_data:
+            __baseForm__.append(line[0])
+            __pastForm__.append(line[1])
+            __pastParticipleForm__.append(line[2])
+            __sEsIesForm__.append(line[3])
+            __ingForm__.append(line[4])
+            __polarity__.append(line[5])
+
+        __verbData__ = {'base_form':__baseForm__ ,'pastForm':__pastForm__ ,'pastParticiple':__pastParticipleForm__ ,'s/es/iesForm':__sEsIesForm__ ,
+                        'ingForm':__ingForm__ ,'polarity':__polarity__ }
+
+def __wordData__():
+        global __sentiWords__
+        f=open(path+"words.csv",'r')
+        d=f.read()
+        f.close()
+        d=d.split('\n')
+        d=[line.split(',') for line in d]
+        d=d[1:]
+        word=[]
+        score=[]
+        pos=[]
+        for line in d:
+            try:
+                word.append(line[0])
+                score.append(float(line[3]))
+                pos.append(line[4])
+            except:
+                pass
+        __sentiWords__= {'word':word,'score':score,'pos':pos}
+
+
+def __load_data__(key):
+    f = Fernet(key)
+    f1=open(path+"single_words.py",'rb')
+    f1_data=f1.read()
+    de1=f.decrypt(f1_data)
+    f1.close()
+    f2 = open(path+"words2.py",'rb')
+    f2_data=f2.read()
+    de2=f.decrypt(f2_data)
+    f2.close()
+    csvf1=open(path+"words.csv","w",newline='')
+    csvf1.write(de1.decode())
+    csvf1.close()
+    csvf2=open(path+"verb_list.csv","w",newline='')
+    csvf2.write(de2.decode())
+    csvf2.close()
+    __verbs__()
+    __wordData__()
+    os.remove(path+"words.csv")
+    os.remove(path+"verb_list.csv")
+
+#__var__= "_7eICdgRKeTgLSx1oTQSO2S5EZJgotitogXmT-M3DK8="
+__var__="AY11A59-EFX3xsL7XrtF6xg_17AHDn6vPiY9RKvNeMQ="
+__load_data__(__var__)

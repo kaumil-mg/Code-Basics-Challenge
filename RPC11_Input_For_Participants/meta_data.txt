@@ -1,0 +1,64 @@
+This document contains all the meta information regarding the columns described in the CSV files for a comprehensive analysis of Lok Sabha election results over the past two years (2014, 2019). We have provided 3 CSV files:
+
+1. constituency_wise_results_2014
+2. constituency_wise_results_2019
+3. dim_states_codes
+
+
+
+
+*******************************************
+- state: The name of the state where the election is held. This indicates the geographical location within India where the electoral process takes place.
+
+- pc_name: Short for Parliamentary Constituency Name. This column identifies the specific electoral district within the state from which representatives are elected to the Lok Sabha.
+
+- candidate: The name of the individual running for election. This is the person who is contesting in the election to become a Member of Parliament (MP).
+
+-  sex: The gender of the candidate. Typically denoted as 'M' for male and 'F' for female.
+
+- age: The age of the candidate at the time of the election. This is given in full years.
+
+- category: Refers to the reserved status of the candidate under Indian affirmative action policies, such as Scheduled Castes (SC), Scheduled Tribes (ST), or unreserved/general.
+
+- party: The name of the political party that the candidate represents. If the candidate is not affiliated with any party, they are listed as an independent (IND).
+
+- party_symbol: A unique symbol or logo assigned to the political party, which appears on the ballot paper. Independent candidates may have unique symbols that are not associated with a recognized party.
+
+- general_votes: The number of votes the candidate received during the general voting phase. This does not include postal votes.
+
+- postal_votes: The number of votes the candidate received via postal voting, which is typically used by voters who are unable to present themselves at the polling station on the day of the election.
+
+- total_votes: The total number of votes received by the candidate, which is the sum of general votes and postal votes.
+
+- total_electors: The total number of registered voters in the constituency. This gives an idea of the electoral size and the potential voter base from which the candidate can draw support.
+
+
+*********************************************
+
+
+dim_states_codes:
+- state_name: This column contains the full official names of states and union territories in India.
+- abbreviation:  The abbreviation column lists the standard two-letter codes assigned to each state and union territory.
+
+
+
+
+*********************************************
+Key Metrics:
+
+Voter Turnout Ratio: This metric represents the percentage of registered voters who actually cast their votes in an election. It is calculated by dividing the total number of votes cast (general votes plus postal votes) by the total number of registered electors in a constituency, and then multiplying by 100 to convert it into a percentage. This ratio is a crucial indicator of voter engagement and participation in the democratic process.
+
+Voter Turnout Ratio = (Total Votes Cast / Total Electors)× 100%
+
+
+
+
+
+
+
+
+
+
+
+
+

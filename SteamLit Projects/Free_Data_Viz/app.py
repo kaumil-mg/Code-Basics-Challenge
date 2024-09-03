@@ -1,7 +1,8 @@
 import streamlit as st
 
+st.set_page_config(page_title='Kaumil Mistry - Data Scientist', page_icon=':smile:', layout='wide')
+
 # Set the title and header
-st.title("Kaumil Mistry - Data Scientist")
 st.header("Resume")
 
 # Contact Information

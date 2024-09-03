@@ -99,4 +99,3 @@ st.write("""
 
 # Footer
 st.write("For more details, visit my [LinkedIn](https://www.linkedin.com/in/kaumilmg/) or [GitHub](https://github.com/kaumil-mg).")
-

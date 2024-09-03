@@ -1,19 +1,48 @@
 import streamlit as st
+import json
+from streamlit_lottie import st_lottie
+import requests
 
 st.set_page_config(page_title='Kaumil Mistry - Data Scientist', page_icon=':smile:', layout='wide')
 
+
+
+col1, col2, col3 = st.columns((3))
+
 # Set the title and header
-st.header("Resume")
+with col1:
+    st.header("Resume")
+
+# load animation 
+def load_lottie(url: str):
+    r= requests.get(url)
+    if r.status_code !=200:
+        return None
+    return r.json()
+
+
 
 # Contact Information
-st.subheader("Contact Information")
-st.write("""
-**Email:** kaumil09@gmail.com  
-**Phone:** 6354162751  
-**Portfolio:** [Kaumilmg Portfolio](https://kaumil-mg.github.io/Portfolio-web)  
-**LinkedIn:** [Kaumil Mistry](https://www.linkedin.com/in/kaumilmg/)  
-**GitHub:** [Kaumil Mistry](https://github.com/kaumil-mg)
-""")
+with col1:
+    st.subheader("Contact Information")
+    st.write("""
+    **Email:** kaumil09@gmail.com  
+    **Phone:** 6354162751  
+    **Portfolio:** [Kaumilmg Portfolio](https://kaumil-mg.github.io/Portfolio-web)  
+    **LinkedIn:** [Kaumil Mistry](https://www.linkedin.com/in/kaumilmg/)  
+    **GitHub:** [Kaumil Mistry](https://github.com/kaumil-mg)
+    """)
+with col3:
+    lottie_hello = load_lottie('https://lottie.host/03f63272-ebfd-421f-a05d-d5a115ea834d/MNRX76Zr4S.json')
+    st_lottie(
+        lottie_hello,
+        key='Hello Buddy',
+        quality='high',
+        height=300,
+        width=300,
+        speed=1,
+        loop=2
+    )
 
 # Profile
 st.subheader("Profile")
@@ -87,12 +116,12 @@ st.write("""
 - Utilized Python packages like pandas, numpy, matplotlib, seaborn, and plotly for visualization.
 """)
 
-st.write("**Flipkart Product Review Using Python - AWS (Code pipeline, Beanstalk), MongoDB**")
+st.write("**[Flipkart Product Review Using Python - AWS (Code pipeline, Beanstalk), MongoDB](https://github.com/kaumil-mg/web-scrap)**")
 st.write("""
 - Web scraped product reviews using BeautifulSoup and Selenium, stored data in MongoDB, and automated deployment with AWS services.
 """)
 
-st.write("**E-commerce Website - HTML & CSS, PHP, JS**")
+st.write("**[E-commerce Website - HTML & CSS, PHP, JS](https://www.youtube.com/watch?v=6TDlgTe8gEQ)**")
 st.write("""
 - Built a dynamic e-commerce website with essential features such as product catalog, shopping cart, secure checkout, and showcased skills in database management and user authentication.
 """)

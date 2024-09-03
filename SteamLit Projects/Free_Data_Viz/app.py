@@ -80,7 +80,7 @@ st.write("""
 # Projects
 st.subheader("Projects")
 
-st.write("**Data Visualization - Power BI**")
+st.write("**[Data Visualization - Power BI](https://linktr.ee/Kaumilmg)**")
 st.write("""
 - Conducted in-depth analysis across different fields using Power BI for data visualization.
 - Strong grasp of live data, SQL, Python, and various dataset formats such as JSON, CSV, Excel, and SQL.

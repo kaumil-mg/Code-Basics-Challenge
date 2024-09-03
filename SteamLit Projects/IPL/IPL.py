@@ -16,6 +16,9 @@ matches = pd.read_csv("datasets/matches.csv")
 df = deliver.merge(matches, left_on='match_id', right_on='id',how='inner')
 
 # Data cleaning
+matches = matches.dropna(subset=['winner'])
+matches['player_of_match'] = matches['player_of_match'].fillna('Unknown')
+matches.drop(['id', 'city', 'method'], axis=1, inplace=True)
 # Mapping dictionary for old names to standardized names
 team_name_mapping = {
     'Delhi Daredevils': 'Delhi Capitals',
